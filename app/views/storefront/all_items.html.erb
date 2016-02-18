@@ -23,7 +23,7 @@
         <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
       </div>
       <div class="modal-body">
-      	<p><%= image_tag product.image.url(:thumb), class: "pull-right" %></p>
+      	<p><%= image_tag product.image, class: "pull-right" %></p>
       	<p><%= number_to_currency product.price %></p>
       	<p><%= product.description %></p>
       </div>
