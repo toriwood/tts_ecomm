@@ -17,5 +17,52 @@
 @import 'bootstrap';
 
 .modal-header {
-	background-color: #129793;
+	background-color: #59323C;
+	color: #F2EEB3;
+}
+
+.navbar.navbar-default {
+	background: #59323C;
+}
+
+ul.nav.navbar-nav a, ul.nav.navbar-nav > li.active a {
+	color: #F2EEB3;
+}
+
+ul.nav.navbar-nav > li.active a {
+	background: #260126;
+}
+
+ul.nav.navbar-nav li a:focus, ul.nav.navbar-nav li a:hover {
+	color: #8C6954;
+}
+
+ul.nav.navbar-nav > li.active a {
+	background: #260126;
+}
+
+div, .navbar-nav {
+	font-family: 'Raleway', Helvetica, Arial, sans-serif;
+}
+
+.dropdown-toggle {
+}
+
+ul.dropdown-menu li a, ul.dropdown-menu li a:hover {
+	background-color: #59323C;	
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	background-color: #59323C;
+	color: #8C6954;
+}
+
+.btn.btn-primary, .btn.btn-primary:focus {
+	background: #59323C;
+	border-color: #59323C;
+	color: #F2EEB3;
+}
+
+.btn.btn-primary:hover {
+	color: #8C6954;
 }
