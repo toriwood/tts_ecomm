@@ -7,7 +7,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @product.price %>
+  <%= number_to_currency(@product.price) %>
 </p>
 
 <p>
@@ -20,9 +20,20 @@
   <%= @product.rating %>
 </p>
 
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @product.image.url(:thumb) %>
+</p>
+
 <p>
   <strong>Category:</strong>
-  <%= @product.category_id %>
+  <%= @product.category.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
 </p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
