@@ -45,6 +45,14 @@ div, .navbar-nav {
 	font-family: 'Raleway', Helvetica, Arial, sans-serif;
 }
 
+div {
+	color: #260126;
+}
+
+a, a:hover {
+	color: #260126;
+}
+
 .dropdown-toggle {
 }
 
@@ -65,4 +73,8 @@ ul.dropdown-menu li a, ul.dropdown-menu li a:hover {
 
 .btn.btn-primary:hover {
 	color: #8C6954;
+}
+
+html {
+	background: #BFAF80;
 }
