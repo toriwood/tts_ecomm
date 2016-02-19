@@ -29,7 +29,11 @@
 					<li><%= link_to "G-Shack", root_path, class: "navbar-brand" %></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<% if user_signed_in? %>
+					<% if user_signed_in? || admin_signed_in? %>
+							<% if admin_signed_in? %>
+								<li><%= link_to "Categories", categories_path %></li>
+								<li><%= link_to "Products", products_path %></li>
+							<% end %>
 						<li><%= link_to "Edit Account", edit_user_registration_path %></li>
 						<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
 					<% else %>
