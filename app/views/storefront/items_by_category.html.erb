@@ -4,10 +4,10 @@
 	<% @products.each do |product| %>
 	<div class="col-md-4">
 		<div class="well center-it">
-			<p><%= image_tag product.image.url(:medium) %></p>
+			<p><%= link_to image_tag(product.image.url(:medium)), product %></p>
 			<h3><%= link_to product.name, product %></h3>
 			<p><%= number_to_currency product.price %></p>
-			<p><%= product.description %></p>
+			<p><%= product.description[0..100] %> <%= link_to "...more info", product %></p>
 			<p>
 				<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal_<%=product.id%>"><span class="glyphicon glyphicon-plus"></span> Quick Info</a>
 			</p>
@@ -19,7 +19,7 @@
     <div class="modal-content">
       <div class="modal-header modal-primary">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
+        <h4 class="modal-title" id="myModalLabel"><%= link_to product.name, product %></h4>
       </div>
       <div class="modal-body">
       	<p><%= image_tag product.image.url(:thumb), class: "pull-right" %></p>
