@@ -1,40 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+<div class="well">
+  <h1><strong><%= @product.name %></strong></h1>
+  <p><%= image_tag @product.image.url(:medium) %></p>
+  <p>Price: <%= number_to_currency @product.price %></p>
+  <p>Quantity: <%= @product.quantity %></p>
+  <p>Category: <%= link_to @product.category.name, @product.category %></p>
+  <p><%= @product.description %></p>
+</div>
 
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency(@product.price) %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @product.quantity %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @product.rating %>
-</p>
-
-
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @product.image.url(:thumb) %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<% if admin_signed_in? %>
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Back', products_path %>
+<% end %>
