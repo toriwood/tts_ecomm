@@ -7,10 +7,12 @@ class StorefrontController < ApplicationController
   def items_by_category
   	@categories = Category.order('name ASC').all
   	@category = Category.find(params[:format])
-  	@products = Product.where(category_id: params[:format])
+  	@products = @category.products
   end
 
-  def items_by_price
+  def items_by_tag
+    @products = Product.where(tag: params[:tag])
+    @tag = params[:tag]
   end
 
 end

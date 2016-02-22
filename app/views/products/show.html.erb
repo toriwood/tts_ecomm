@@ -6,10 +6,11 @@
   <p>Price: <%= number_to_currency @product.price %></p>
   <p>Quantity: <%= @product.quantity %></p>
   <p>Category: <%= link_to @product.category.name, @product.category %></p>
+  <p>Tag: <%= @product.tag %></p>
   <p><%= @product.description %></p>
 </div>
 
-<% if admin_signed_in? %>
+<% if current_user.admin %>
   <%= link_to 'Edit', edit_product_path(@product) %> |
   <%= link_to 'Back', products_path %>
 <% end %>
