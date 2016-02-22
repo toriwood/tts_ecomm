@@ -1,4 +1,13 @@
-<% @users.each do |user| %>
-<%= user.email %> <br>
-
+<% if current_user.try(:admin?) %>
+	<% @users.each do |user| %>
+		<%= user.email %> | 
+		<% if user.admin == true %>
+		<%= link_to "Steal the power", hog_path(id: user.id) %>
+		<% else %>
+		<%= link_to "Make Admin", share_path(id: user.id) %>
+		<% end %>
+		<br>
+	<% end %>
+<% else %>
+<h2>You do not have power to give power!</h2>
 <% end %>

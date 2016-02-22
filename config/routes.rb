@@ -13,5 +13,8 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :products
+
+  get 'hog' => 'admin#hog_power'
+  get 'share' => 'admin#give_power'
   
 end
