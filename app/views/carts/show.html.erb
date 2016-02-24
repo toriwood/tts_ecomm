@@ -20,6 +20,7 @@
 		<% end %>
 	</tbody>
 </table>
+<h3>Order Subtotal: <%= number_to_currency @cart.subtotal %></h3>
 
 <%= link_to "Continue Shopping", root_path, class: "btn btn-success" %>
 <%= button_to "Empty Cart", @cart, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>

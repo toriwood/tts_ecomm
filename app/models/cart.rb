@@ -13,9 +13,11 @@ class Cart < ActiveRecord::Base
   end
 
   def subtotal
-  # 	subtotal = 0
-		# line_items.each do |item|
-			
+  subtotal = 0
+  	line_items.each do |item|
+      subtotal += item.total_price
+    end
+    subtotal
   end
 
 end
