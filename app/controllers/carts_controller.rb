@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_filter :authenticate_user!, only: [:checkout]
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:show, :edit, :update, :destroy, :checkout]
 
   # GET /carts
   # GET /carts.json
@@ -90,7 +90,7 @@ class CartsController < ApplicationController
     @order.grand_total = @cart.subtotal + @order.sales_tax
     @order.save
 
-    @line_items.each do |line_item|
+    @cart.line_items.each do |line_item|
       line_item.product.quantity -= line_item.quantity
       line_item.product.save
     end

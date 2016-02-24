@@ -1,4 +1,9 @@
 Rails.application.configure do
+  
+  PUBLISHABLE_KEY = "pk_test_uCiexElwTV4C0YSE33C1Nk4h"
+  SECRET_KEY = "sk_test_Da6E7sceBHPnJaRo1Jz566Or"
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
