@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_filter :authenticate_user!, only: [:checkout]
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
   # GET /carts
@@ -57,6 +58,22 @@ class CartsController < ApplicationController
     @cart.destroy if @cart.id == session[:cart_id]
     session[:cart_id] = nil
     redirect_to root_path
+  end
+
+  def checkout
+    @order = Order.new
+    @order.user_id = current_user.id   
+    
+    @order.subtotal = @cart.subtotal
+    @order.sales_tax = @cart.subtotal * 0.07
+    @order.grand_total = @cart.subtotal + @order.sales_tax
+    @order.save
+
+    @line_items.each do |line_item|
+      line_item.product.quantity -= line_item.quantity
+      line_item.product.save
+    end
+  
   end
 
   private
