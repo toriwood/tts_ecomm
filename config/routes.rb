@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'share' => 'admin#give_power'
   
   get '/checkout' => 'carts#checkout'
-  get '/order_complete' => 'carts#order_complete'
+  post '/order_complete' => 'carts#order_complete'
 
 
 end

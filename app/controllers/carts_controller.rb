@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
+  include CurrentCart
   before_filter :authenticate_user!, only: [:checkout]
-  before_action :set_cart, only: [:show, :edit, :update, :destroy, :checkout]
+  before_action :set_cart, only: [:show, :edit, :update, :destroy, :checkout, :order_complete]
 
   # GET /carts
   # GET /carts.json
@@ -76,6 +77,8 @@ class CartsController < ApplicationController
       :currency    => 'usd'
     )
 
+    @cart.destroy
+
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path  
@@ -98,10 +101,6 @@ class CartsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
