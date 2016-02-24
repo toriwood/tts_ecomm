@@ -60,6 +60,27 @@ class CartsController < ApplicationController
     redirect_to root_path
   end
 
+  def order_complete
+    @order = Order.find(params[:order_id])
+    @amount = (@order.grand_total.to_f.round(2)*100).to_i
+
+    customer = Stripe::Customer.create(
+      :email => current_user.email,
+      :card  => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => @amount,
+      :description => 'Rails Stripe customer',
+      :currency    => 'usd'
+    )
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to new_charge_path  
+  end
+
   def checkout
     @order = Order.new
     @order.user_id = current_user.id   

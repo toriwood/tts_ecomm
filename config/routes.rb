@@ -14,8 +14,13 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :products
+  resources :charges
 
   get 'hog' => 'admin#hog_power'
   get 'share' => 'admin#give_power'
   
+  get '/checkout' => 'carts#checkout'
+  get '/order_complete' => 'carts#order_complete'
+
+
 end

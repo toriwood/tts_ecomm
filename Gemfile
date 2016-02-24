@@ -8,6 +8,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'cancan'
 gem 'will_paginate'
+gem 'stripe'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
